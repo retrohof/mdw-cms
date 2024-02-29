@@ -263,3 +263,4 @@ src/Retrohof.Blazor.Server.Tiered/Logs/*
 
 # Use abp install-libs to restore.
 #**/wwwroot/libs/*
+/src/Mdw.Web/Logs/logs.txt
