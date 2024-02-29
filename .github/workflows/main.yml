@@ -59,7 +59,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'mdw-cms' # Replace with your azure web app name
+          app-name: 'mdwigmore' # Replace with your azure web app name
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }} # Set your Azure Web App publish your profile as a secret in your repository settings
           package: .
