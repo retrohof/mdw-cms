@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'mdw-cms'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_05635DFDA73E4B6C9FF70D131E7D73E4 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0B824FFB898A48D99157C08129E7A6FA }}
           package: .
