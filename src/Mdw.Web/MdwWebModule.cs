@@ -45,6 +45,8 @@ using System;
 using Volo.CmsKit.Web;
 using Volo.Abp.BlobStoring;
 using Volo.Abp.BlobStoring.Database;
+using Mdw.TenantManagement;
+using Volo.Abp.MultiTenancy;
 
 namespace Mdw.Web;
 
@@ -184,8 +186,12 @@ namespace Mdw.Web;
         ConfigureNavigationServices();
         ConfigureAutoApiControllers();
         ConfigureSwaggerServices(context.Services);
+        ConfigureBlobDatabaseStorage();
+        ConfigureTenantResolvers();
+    }
 
-
+    private void ConfigureBlobDatabaseStorage()
+    {
         Configure<AbpBlobStoringOptions>(options =>
         {
             options.Containers.ConfigureDefault(container =>
@@ -193,7 +199,15 @@ namespace Mdw.Web;
                 container.UseDatabase();
             });
         });
+    }
 
+    private void ConfigureTenantResolvers()
+    {
+        Configure<AbpTenantResolveOptions>(options =>
+        {
+            options.TenantResolvers.Clear();
+            options.TenantResolvers.Add(new HostTenantResolveContributor());
+        });
     }
 
     private void ConfigureAuthentication(ServiceConfigurationContext context)
